@@ -1,0 +1,36 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'LawEZY-Backend/**'
+      - '.github/workflows/deploy-backend.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      
+      - name: Build with Maven
+        working-directory: LawEZY-Backend
+        run: mvn clean package -DskipTests
+      
+      - name: Deploy Backend
+        run: |
+          echo "Deploying Backend to production..."
+          # Add your backend deployment script here
+          # Examples:
+          # - Docker build and push
+          # - Docker Compose restart
+          # - Kubernetes deployment
+          # - SSH to server: ssh user@server 'cd /app && docker-compose up -d backend'
