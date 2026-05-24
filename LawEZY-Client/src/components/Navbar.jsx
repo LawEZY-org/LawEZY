@@ -382,6 +382,77 @@ const Navbar = () => {
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
+        :global(body.theme-dark) .navbar-premium {
+          background: rgba(10, 13, 20, 0.75) !important;
+          border-bottom: 1px solid rgba(245, 158, 11, 0.15) !important;
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25) !important;
+        }
+        :global(body.theme-dark) .navbar-premium .nav-link {
+          color: rgba(248, 250, 252, 0.7) !important;
+        }
+        :global(body.theme-dark) .navbar-premium .nav-link:hover,
+        :global(body.theme-dark) .navbar-premium .nav-link.active {
+          color: #F59E0B !important;
+          border-color: #F59E0B !important;
+        }
+        :global(body.theme-dark) .navbar-premium .lawezy-logo {
+          color: #F59E0B !important;
+        }
+        :global(body.theme-dark) .navbar-premium .brand-marketplace {
+          color: rgba(248, 250, 252, 0.55) !important;
+        }
+        :global(body.theme-dark) .navbar-premium .btn-secondary {
+          border-color: rgba(245, 158, 11, 0.3) !important;
+          color: #F1F5F9 !important;
+          background: transparent !important;
+        }
+        :global(body.theme-dark) .navbar-premium .btn-secondary:hover {
+          background: rgba(245, 158, 11, 0.1) !important;
+          border-color: #F59E0B !important;
+        }
+        :global(body.theme-dark) .navbar-premium .btn-premium {
+          background: #F59E0B !important;
+          border-color: #D97706 !important;
+          color: #000000 !important;
+        }
+        :global(body.theme-dark) .navbar-premium .btn-premium:hover {
+          background: #D97706 !important;
+          box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4) !important;
+        }
+        :global(body.theme-dark) .navbar-premium .btn-icon-nav {
+          border-color: rgba(255, 255, 255, 0.1) !important;
+          color: #FFFFFF !important;
+        }
+        :global(body.theme-dark) .navbar-premium .btn-icon-nav:hover {
+          border-color: #F59E0B !important;
+        }
+        :global(body.theme-dark) .navbar-premium .notify-bell {
+          filter: brightness(1.5);
+        }
+        :global(body.theme-dark) .navbar-premium .btn-avatar {
+          border-color: #F59E0B !important;
+        }
+        :global(body.theme-dark) .navbar-premium .profile-dropdown,
+        :global(body.theme-dark) .navbar-premium .notifications-dropdown {
+          background: #101520 !important;
+          border-color: rgba(245, 158, 11, 0.15) !important;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.4) !important;
+        }
+        :global(body.theme-dark) .navbar-premium .dropdown-divider {
+          background: rgba(255, 255, 255, 0.08) !important;
+        }
+        :global(body.theme-dark) .navbar-premium .dropdown-item {
+          color: rgba(248, 250, 252, 0.7) !important;
+        }
+        :global(body.theme-dark) .navbar-premium .dropdown-item:hover {
+          background: rgba(245, 158, 11, 0.1) !important;
+          color: #F59E0B !important;
+        }
+        :global(body.theme-dark) .navbar-premium .user-name {
+          color: #FFFFFF !important;
+        }
+
         .navbar-premium.autohide {
           transform: translateY(-100%);
           opacity: 0;

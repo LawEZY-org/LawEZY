@@ -48,6 +48,15 @@ const DocumentAnalyzer = () => {
         refreshWallet();
     }, []);
 
+    // Sync theme with document.body to adapt header dynamically
+    useEffect(() => {
+        document.body.classList.remove('theme-dark', 'theme-light');
+        document.body.classList.add(`theme-${theme}`);
+        return () => {
+            document.body.classList.remove('theme-dark', 'theme-light');
+        };
+    }, [theme]);
+
     // Wallet Refresh: ensure sidebar quota reflects live DB state
     const refreshWallet = async () => {
         if (!user?.id) return;
