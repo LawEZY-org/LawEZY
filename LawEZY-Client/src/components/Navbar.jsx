@@ -384,7 +384,7 @@ const Navbar = () => {
         }
 
         :global(body.theme-dark) .navbar-premium {
-          background: rgba(10, 13, 20, 0.75) !important;
+          background: rgba(26, 31, 44, 0.85) !important;
           border-bottom: 1px solid rgba(245, 158, 11, 0.15) !important;
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25) !important;
         }
@@ -435,7 +435,7 @@ const Navbar = () => {
         }
         :global(body.theme-dark) .navbar-premium .profile-dropdown,
         :global(body.theme-dark) .navbar-premium .notifications-dropdown {
-          background: #101520 !important;
+          background: #242A38 !important;
           border-color: rgba(245, 158, 11, 0.15) !important;
           box-shadow: 0 10px 40px rgba(0,0,0,0.4) !important;
         }

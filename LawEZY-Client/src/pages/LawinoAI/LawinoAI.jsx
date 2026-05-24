@@ -2,15 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Plus, 
-  FileSearch, 
-  History, 
-  LayoutDashboard, 
-  LogOut, 
-  User, 
-  Send, 
-  Mic, 
+import {
+  Plus,
+  FileSearch,
+  History,
+  LayoutDashboard,
+  LogOut,
+  User,
+  Send,
+  Mic,
   MoreVertical,
   Trash2,
   ChevronLeft,
@@ -40,13 +40,13 @@ const LawinoAI = () => {
   const [theme, setTheme] = useState(localStorage.getItem('lawino_theme') || 'dark');
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1200);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   // Tactical Edit State
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingValue, setEditingValue] = useState('');
   const [isRecording, setIsRecording] = useState(false);
   const [attachedFiles, setAttachedFiles] = useState([]); // Base64 images
-  
+
   const textareaRef = useRef(null);
   const scrollRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -99,10 +99,10 @@ const LawinoAI = () => {
     try {
       const response = await apiClient.get(`/api/ai/sessions/${id}`);
       const historyMessages = response.data?.data || [];
-      setMessages(historyMessages.map(m => ({ 
-        role: m.role, 
+      setMessages(historyMessages.map(m => ({
+        role: m.role,
         content: m.content,
-        timestamp: m.timestamp 
+        timestamp: m.timestamp
       })));
       localStorage.setItem('lawino_session_id', id);
     } catch (err) {
@@ -115,7 +115,7 @@ const LawinoAI = () => {
   const handleDeleteSession = async (e, id) => {
     e.stopPropagation();
     if (!window.confirm("Are you sure you want to delete this Expert archive? This action cannot be undone.")) return;
-    
+
     try {
       await apiClient.delete(`/api/ai/sessions/${id}`);
       setHistory(prev => prev.filter(s => s.id !== id));
@@ -144,7 +144,7 @@ const LawinoAI = () => {
     const recognition = new SpeechRecognition();
     recognition.lang = 'en-US';
     recognition.continuous = false;
-    
+
     recognition.onstart = () => setIsRecording(true);
     recognition.onend = () => setIsRecording(false);
     recognition.onresult = (event) => {
@@ -179,24 +179,24 @@ const LawinoAI = () => {
   const MarkdownComponents = {
     a: ({ node, ...props }) => {
       const { href, children } = props;
-      
+
       // UNIVERSAL INTERCEPT: Any link containing 'experts' or using 'internal:' protocol
       const isInternal = href?.startsWith('internal:') || href?.includes('/experts');
-      
+
       if (isInternal) {
         // Universal Path Sanitization: Strips 'internal:' and ensures absolute routing
         let targetPath = href;
         if (href.startsWith('internal:')) {
           targetPath = href.split(':', 2)[1];
         }
-        
+
         // Ensure strictly absolute path for routing stability (e.g., 'experts' -> '/experts')
         const cleanPath = targetPath.startsWith('/') ? targetPath : `/${targetPath}`;
-        
+
         return (
-          <button 
+          <button
             type="button"
-            className="btn-expert-cta" 
+            className="btn-expert-cta"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -209,7 +209,7 @@ const LawinoAI = () => {
           </button>
         );
       }
-      
+
       return <a {...props} target="_blank" rel="noopener noreferrer" className="external-link" />;
     }
   };
@@ -250,31 +250,31 @@ const LawinoAI = () => {
 
   const handleSend = async () => {
     if ((!input.trim() && attachedFiles.length === 0) || isLoading) return;
-    
-    const userMessage = { 
-      role: 'user', 
+
+    const userMessage = {
+      role: 'user',
       content: input,
-      files: attachedFiles.map(f => f.name) 
+      files: attachedFiles.map(f => f.name)
     };
-    
+
     setMessages(prev => [...prev, userMessage]);
     const currentInput = input;
     const currentImages = attachedFiles.map(f => f.base64);
-    
+
     setInput('');
     setAttachedFiles([]);
     setIsLoading(true);
 
     try {
-      const payload = { 
-        query: currentInput, 
+      const payload = {
+        query: currentInput,
         sessionId: sessionId,
-        images: currentImages 
+        images: currentImages
       };
-      
+
       const response = await apiClient.post('/api/ai/copilot', payload);
       const data = response.data?.data;
-      
+
       if (data?.sessionId && data.sessionId !== sessionId) {
         setSessionId(data.sessionId);
         localStorage.setItem('lawino_session_id', data.sessionId);
@@ -282,7 +282,7 @@ const LawinoAI = () => {
       }
 
       const fullResponse = data?.response || "Expert protocols interrupted.";
-      
+
       // Industrial Grade Typewriter: Stream characters into the message state
       const newAiMessage = { role: 'ai', content: '' };
       setMessages(prev => [...prev, newAiMessage]);
@@ -306,7 +306,7 @@ const LawinoAI = () => {
           clearInterval(interval);
         }
       }, 5); // Fast tactical streaming
-      
+
       // Update Expert Units
       refreshWallet();
     } catch (err) {
@@ -315,9 +315,9 @@ const LawinoAI = () => {
         setQuotaType('AI_REFILL');
         setShowQuotaModal(true);
       } else {
-        setMessages(prev => [...prev, { 
-          role: 'ai', 
-          content: 'Connection to LawinoAI tactical link lost. Please check your network and re-engage.' 
+        setMessages(prev => [...prev, {
+          role: 'ai',
+          content: 'Connection to LawinoAI tactical link lost. Please check your network and re-engage.'
         }]);
       }
     } finally {
@@ -359,32 +359,32 @@ const LawinoAI = () => {
 
   const handleSaveEdit = async (index) => {
     if (!editingValue.trim() || isLoading) return;
-    
+
     // Industrial Standard: Branch conversation at the edit point
     const truncatedMessages = messages.slice(0, index);
-    const updatedUserMessage = { 
-      role: 'user', 
+    const updatedUserMessage = {
+      role: 'user',
       content: editingValue,
       files: [] // Edits typically focus on text
     };
-    
+
     setMessages([...truncatedMessages, updatedUserMessage]);
     setEditingIndex(null);
-    
+
     // Re-trigger the AI engagement
     const currentInput = editingValue;
     setIsLoading(true);
 
     try {
-      const payload = { 
-        query: currentInput, 
+      const payload = {
+        query: currentInput,
         sessionId: sessionId,
-        images: [] 
+        images: []
       };
-      
+
       const response = await apiClient.post('/api/ai/copilot', payload);
       const data = response.data?.data;
-      
+
       const aiResponse = { role: 'ai', content: data?.response };
       setMessages(prev => [...prev, aiResponse]);
       refreshWallet();
@@ -394,9 +394,9 @@ const LawinoAI = () => {
         setQuotaType('AI_REFILL');
         setShowQuotaModal(true);
       } else {
-        setMessages(prev => [...prev, { 
-          role: 'ai', 
-          content: 'Engagement interrupted during edit processing. Please retry.' 
+        setMessages(prev => [...prev, {
+          role: 'ai',
+          content: 'Engagement interrupted during edit processing. Please retry.'
         }]);
       }
     } finally {
@@ -429,8 +429,8 @@ const LawinoAI = () => {
 
       {/* Expert Left Sidebar */}
       <aside className={`ai-sidebar ${isSidebarCollapsed ? 'collapsed' : ''} ${isMobile && isMobileSidebarOpen ? 'mobile-open' : ''}`}>
-        <button 
-          className="sidebar-toggle" 
+        <button
+          className="sidebar-toggle"
           onClick={() => {
             const newState = !isSidebarCollapsed;
             setIsSidebarCollapsed(newState);
@@ -448,15 +448,15 @@ const LawinoAI = () => {
                 <Plus size={18} />
                 <span>New Chat</span>
               </button>
-              <button 
-                className="secondary-action-btn" 
+              <button
+                className="secondary-action-btn"
                 onClick={() => navigate('/lawino-ai/analyzer')}
               >
                 <FileSearch size={18} />
                 <span>Doc Auditor</span>
               </button>
             </div>
-            
+
             <div className="sidebar-scrollable">
               <div className="sidebar-section">
                 <div className="section-label">
@@ -465,8 +465,8 @@ const LawinoAI = () => {
                 </div>
                 <div className="history-flow">
                   {history.map(session => (
-                    <div 
-                      key={session.id} 
+                    <div
+                      key={session.id}
                       className={`history-entry ${sessionId === session.id ? 'active' : ''}`}
                       onClick={() => loadSession(session.id)}
                     >
@@ -474,8 +474,8 @@ const LawinoAI = () => {
                         <Sparkles size={14} className="entry-icon" />
                         <span className="entry-title">{session.title}</span>
                       </div>
-                      <button 
-                        className="btn-delete-session" 
+                      <button
+                        className="btn-delete-session"
                         onClick={(e) => handleDeleteSession(e, session.id)}
                       >
                         <Trash2 size={12} />
@@ -496,8 +496,8 @@ const LawinoAI = () => {
                   <div className="user-name">{userName}</div>
                   <div className="user-status-row">
                     <span className="user-role">{userRole}</span>
-                    <div 
-                      className="user-quota-badge clickable" 
+                    <div
+                      className="user-quota-badge clickable"
                       onClick={() => setShowQuotaModal(true)}
                       title="Refill Institutional Units"
                     >
@@ -516,8 +516,8 @@ const LawinoAI = () => {
       <main className={`ai-workspace ${isSidebarCollapsed ? 'expanded' : ''}`}>
         {/* Persistent Theme Control (Top Right) */}
         <div className="workspace-header-actions">
-          <button 
-            className="theme-toggle-fab" 
+          <button
+            className="theme-toggle-fab"
             onClick={() => {
               const newTheme = theme === 'dark' ? 'light' : 'dark';
               setTheme(newTheme);
@@ -533,8 +533,8 @@ const LawinoAI = () => {
 
 
         {isMobile && (
-          <button 
-            className="mobile-sidebar-trigger" 
+          <button
+            className="mobile-sidebar-trigger"
             onClick={() => setIsMobileSidebarOpen(true)}
           >
             <span className="history-icon-symbol">◈</span>
@@ -587,8 +587,8 @@ const LawinoAI = () => {
                     <div className="bubble-sender">
                       <span>{msg.role === 'user' ? 'YOU' : 'LAWINO AI'}</span>
                       {msg.role === 'user' && editingIndex !== i && !isLoading && (
-                        <button 
-                          className="btn-edit-query" 
+                        <button
+                          className="btn-edit-query"
                           onClick={() => handleStartEdit(i, msg.content)}
                           title="Edit Query"
                         >
@@ -596,11 +596,11 @@ const LawinoAI = () => {
                         </button>
                       )}
                     </div>
-                    
+
                     <div className="bubble-content">
                       {editingIndex === i ? (
                         <div className="edit-mode-container">
-                          <textarea 
+                          <textarea
                             className="edit-textarea"
                             value={editingValue || ''}
                             onChange={(e) => setEditingValue(e.target.value)}
@@ -612,7 +612,7 @@ const LawinoAI = () => {
                           </div>
                         </div>
                       ) : (
-                        <ReactMarkdown 
+                        <ReactMarkdown
                           remarkPlugins={[remarkGfm]}
                           components={MarkdownComponents}
                           urlTransform={transformUri}
@@ -624,7 +624,7 @@ const LawinoAI = () => {
                   </div>
                 </div>
               ))}
-              
+
               {isLoading && (
                 <div className="chat-row ai">
                   <div className="chat-bubble thinking">
@@ -655,25 +655,25 @@ const LawinoAI = () => {
                   ))}
                 </div>
               )}
-              
+
               <div className="command-input-group">
-                <button 
-                  className="dock-tool-btn" 
-                  onClick={() => fileInputRef.current.click()} 
+                <button
+                  className="dock-tool-btn"
+                  onClick={() => fileInputRef.current.click()}
                   title="Upload Media"
                 >
                   <Plus size={20} />
                 </button>
-                <input 
-                  type="file" 
-                  hidden 
-                  ref={fileInputRef} 
-                  multiple 
-                  accept="image/*" 
-                  onChange={handleFileChange} 
+                <input
+                  type="file"
+                  hidden
+                  ref={fileInputRef}
+                  multiple
+                  accept="image/*"
+                  onChange={handleFileChange}
                 />
 
-                <textarea 
+                <textarea
                   ref={textareaRef}
                   placeholder="Ask Lawino AI anything..."
                   value={input || ''}
@@ -689,16 +689,16 @@ const LawinoAI = () => {
 
                 <div className="dock-actions">
                   {input.trim() || attachedFiles.length > 0 ? (
-                    <button 
-                      className="dock-send-btn active" 
+                    <button
+                      className="dock-send-btn active"
                       onClick={handleSend}
                       disabled={isLoading}
                     >
                       <Send size={18} />
                     </button>
                   ) : (
-                    <button 
-                      className={`dock-tool-btn ${isRecording ? 'recording' : ''}`} 
+                    <button
+                      className={`dock-tool-btn ${isRecording ? 'recording' : ''}`}
                       onClick={toggleMic}
                     >
                       {isRecording ? <Sparkles className="pulse" size={18} /> : <Mic size={18} />}
@@ -721,43 +721,43 @@ const LawinoAI = () => {
             </div>
             <div className="modal-body">
               <p>Select a tactical package to continue with high-fidelity legal intelligence.</p>
-              
+
               <div className="package-options-grid">
-                <div 
-                  className={`package-option ${selectedPackage === 'AI_15' ? 'active' : ''}`} 
+                <div
+                  className={`package-option ${selectedPackage === 'AI_15' ? 'active' : ''}`}
                   onClick={() => setSelectedPackage('AI_15')}
                 >
                   <div className="option-details">
                     <span className="option-name">AI Intelligence (Refill)</span>
                     <span className="option-description">15 Tactical Queries</span>
                   </div>
-                  
+
                 </div>
 
-                <div 
-                  className={`package-option ${selectedPackage === 'DOC_5' ? 'active' : ''}`} 
+                <div
+                  className={`package-option ${selectedPackage === 'DOC_5' ? 'active' : ''}`}
                   onClick={() => setSelectedPackage('DOC_5')}
                 >
                   <div className="option-details">
                     <span className="option-name">Document Auditor (Refill)</span>
                     <span className="option-description">5 Deep-Scan Audits</span>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
             <div className="modal-footer">
               <button className="btn-cancel" onClick={() => setShowQuotaModal(false)}>Close</button>
-              <button 
+              <button
                 className={`btn-primary purchase-btn ${isProcessing ? 'loading' : ''}`}
                 onClick={handlePurchasePackage}
                 disabled={isProcessing || !selectedPackage}
               >
-                                {isProcessing ? 'Processing...' : `Buy Package (₹${selectedPackage === 'AI_15' ? '150' : '250'})`}
+                {isProcessing ? 'Processing...' : `Buy Package (₹${selectedPackage === 'AI_15' ? '150' : '250'})`}
 
               </button>
-              <button 
-                className="btn-secondary" 
+              <button
+                className="btn-secondary"
                 onClick={() => navigate('/dashboard?tab=wallet')}
               >
                 Top up Wallet

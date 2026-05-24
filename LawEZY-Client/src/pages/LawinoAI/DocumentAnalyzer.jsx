@@ -31,7 +31,7 @@ const DocumentAnalyzer = () => {
     const [history, setHistory] = useState([]);
     const [selectedDoc, setSelectedDoc] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [theme, setTheme] = useState(localStorage.getItem('lawino_theme') || 'dark');
+    const [theme, setTheme] = useState(localStorage.getItem('lawino_theme') || 'light');
     const [progress, setProgress] = useState(0);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(localStorage.getItem('lawino_sidebar_collapsed') === 'true');
     const [showQuotaModal, setShowQuotaModal] = useState(false);
