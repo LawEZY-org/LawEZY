@@ -29,22 +29,22 @@
 }
 
 .doc-analyzer-container.theme-dark {
-    --bg-primary: #12161E;
-    --bg-secondary: #1A202A;
+    --bg-primary: #1A1F2C;
+    --bg-secondary: #242A38;
     --text-main: #FFFFFF;
     --text-muted: #8B949E;
-    --sidebar-bg: #12161E;
+    --sidebar-bg: #1A1F2C;
     --sidebar-text: #E1E4E8;
-    --sidebar-border: rgba(255, 255, 255, 0.08);
+    --sidebar-border: rgba(255, 255, 255, 0.06);
     --sidebar-muted: #94A3B8;
-    --sidebar-hover: rgba(255, 255, 255, 0.05);
-    --sidebar-btn-bg: rgba(255, 255, 255, 0.05);
-    --sidebar-btn-hover: rgba(255, 255, 255, 0.1);
+    --sidebar-hover: rgba(255, 255, 255, 0.04);
+    --sidebar-btn-bg: rgba(255, 255, 255, 0.04);
+    --sidebar-btn-hover: rgba(255, 255, 255, 0.08);
     --brand-gold: #FFD700;
     --accent-gold: #D4AF37;
     --brand-gold-glow: rgba(255, 215, 0, 0.3);
-    --glass-bg: rgba(18, 20, 23, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(26, 31, 44, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.06);
     color-scheme: dark;
 }
 

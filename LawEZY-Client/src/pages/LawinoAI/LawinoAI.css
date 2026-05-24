@@ -22,23 +22,23 @@
 }
 
 .lawino-ai-container.theme-dark {
-  --bg-primary: #0A0D14;
-  --bg-secondary: #101520;
+  --bg-primary: #1A1F2C;
+  --bg-secondary: #242A38;
   --text-main: #F8FAFC;
   --text-muted: #94A3B8;
-  --sidebar-bg: #0A0D14;
+  --sidebar-bg: #1A1F2C;
   --sidebar-text: #F1F5F9;
-  --sidebar-border: rgba(255, 255, 255, 0.05);
-  --sidebar-muted: #475569;
-  --sidebar-hover: rgba(255, 255, 255, 0.05);
-  --sidebar-btn-bg: rgba(255, 255, 255, 0.05);
-  --sidebar-btn-hover: rgba(255, 255, 255, 0.1);
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-muted: #64748B;
+  --sidebar-hover: rgba(255, 255, 255, 0.04);
+  --sidebar-btn-bg: rgba(255, 255, 255, 0.04);
+  --sidebar-btn-hover: rgba(255, 255, 255, 0.08);
   --brand-gold: #F59E0B;
   --accent-gold: #D97706;
-  --glass-bg: rgba(10, 13, 20, 0.75);
+  --glass-bg: rgba(26, 31, 44, 0.75);
   --glass-border: rgba(245, 158, 11, 0.15);
-  --dock-bg: #101520;
-  --bubble-ai: #101520;
+  --dock-bg: #242A38;
+  --bubble-ai: #242A38;
   --bubble-user: #FFFFFF;
   color-scheme: dark;
 }
