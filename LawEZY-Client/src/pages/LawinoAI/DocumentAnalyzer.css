@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 .doc-analyzer-container {
-    --sidebar-bg: #121417;
-    --sidebar-text: #E1E4E8;
-    --sidebar-muted: #94A3B8;
-    --sidebar-border: rgba(255, 255, 255, 0.08);
+    --sidebar-bg: #F8FAFC;
+    --sidebar-text: #0F172A;
+    --sidebar-muted: #64748B;
+    --sidebar-border: rgba(0, 0, 0, 0.08);
+    --sidebar-hover: rgba(0, 0, 0, 0.04);
+    --sidebar-btn-bg: rgba(0, 0, 0, 0.04);
+    --sidebar-btn-hover: rgba(0, 0, 0, 0.08);
     --bg-primary: #FFFFFF;
     --bg-secondary: #F9FAFB;
     --text-main: #111827;
@@ -33,6 +36,10 @@
     --sidebar-bg: #12161E;
     --sidebar-text: #E1E4E8;
     --sidebar-border: rgba(255, 255, 255, 0.08);
+    --sidebar-muted: #94A3B8;
+    --sidebar-hover: rgba(255, 255, 255, 0.05);
+    --sidebar-btn-bg: rgba(255, 255, 255, 0.05);
+    --sidebar-btn-hover: rgba(255, 255, 255, 0.1);
     --brand-gold: #FFD700;
     --accent-gold: #D4AF37;
     --brand-gold-glow: rgba(255, 215, 0, 0.3);
@@ -104,8 +111,8 @@
     align-items: center;
     gap: 12px;
     padding: 10px 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
+    background: var(--sidebar-btn-bg);
+    border: 1px solid var(--sidebar-border);
     border-radius: 12px;
     color: var(--sidebar-text);
     font-size: 0.8rem;
@@ -116,9 +123,9 @@
 }
 
 .nav-action-item:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.2);
+    background: var(--sidebar-btn-hover);
+    color: var(--sidebar-text);
+    border-color: var(--brand-gold);
 }
 
 .nav-action-item svg {
@@ -179,7 +186,7 @@
     margin-bottom: 4px;
 }
 
-.doc-analyzer-container .history-entry:hover { background: rgba(255, 255, 255, 0.05); }
+.doc-analyzer-container .history-entry:hover { background: var(--sidebar-hover); }
 
 .doc-analyzer-container .history-entry.active {
     background: rgba(212, 175, 55, 0.12);
@@ -205,7 +212,7 @@
     gap: 10px;
     flex: 1;
     overflow: hidden;
-    color: #FFFFFF;
+    color: var(--sidebar-text);
 }
 
 .doc-analyzer-container .entry-main svg {
@@ -284,7 +291,7 @@
   white-space: nowrap; 
   overflow: hidden; 
   text-overflow: ellipsis; 
-  color: #FFFFFF !important; /* Matches Elite Sidebar style */
+  color: var(--sidebar-text) !important; /* Matches Elite Sidebar style */
   margin-bottom: -1px;
   display: block;
 }
