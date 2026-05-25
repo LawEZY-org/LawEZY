@@ -9,10 +9,10 @@ tokens/
 **/tokens/
 brain/
 **/brain/
+xyz/
+**/xyz/
 *.pem
 *.key
-
-
 
 
 # === 💻 IDE / System ===

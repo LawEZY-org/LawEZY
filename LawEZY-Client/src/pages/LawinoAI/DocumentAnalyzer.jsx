@@ -31,7 +31,7 @@ const DocumentAnalyzer = () => {
     const [history, setHistory] = useState([]);
     const [selectedDoc, setSelectedDoc] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [theme, setTheme] = useState(localStorage.getItem('lawino_theme') || 'dark');
+    const [theme, setTheme] = useState(localStorage.getItem('lawino_theme') || 'light');
     const [progress, setProgress] = useState(0);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(localStorage.getItem('lawino_sidebar_collapsed') === 'true');
     const [showQuotaModal, setShowQuotaModal] = useState(false);
@@ -47,6 +47,15 @@ const DocumentAnalyzer = () => {
         fetchHistory();
         refreshWallet();
     }, []);
+
+    // Sync theme with document.body to adapt header dynamically
+    useEffect(() => {
+        document.body.classList.remove('theme-dark', 'theme-light');
+        document.body.classList.add(`theme-${theme}`);
+        return () => {
+            document.body.classList.remove('theme-dark', 'theme-light');
+        };
+    }, [theme]);
 
     // Wallet Refresh: ensure sidebar quota reflects live DB state
     const refreshWallet = async () => {
