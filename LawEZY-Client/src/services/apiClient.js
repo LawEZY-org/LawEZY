@@ -9,7 +9,7 @@ const apiClient = axios.create({
 });
 
 // Public endpoints that should NEVER carry a Bearer token
-const PUBLIC_PATHS = ['/api/auth/login', '/api/auth/register', '/api/system/mode'];
+const PUBLIC_PATHS = ['/api/auth/login', '/api/auth/register', '/api/system/mode', '/api/public/'];
 
 // Request interceptor: add tokens to every outgoing call EXCEPT public auth endpoints
 apiClient.interceptors.request.use(

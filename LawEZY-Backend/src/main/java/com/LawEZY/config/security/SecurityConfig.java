@@ -69,6 +69,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/system/mode").permitAll()     // ALLOW system mode check (used by MainLayout on load)
                 .requestMatchers("/api/support/**").permitAll()      // ALLOW contact/support queries while logged out
                 .requestMatchers("/api/contact/**").permitAll()      // ALLOW public contact inquiries
+                .requestMatchers("/api/public/**").permitAll()       // ALLOW public profile dossier access (unauthenticated)
                 .requestMatchers("/api/ai/copilot").authenticated()  // AI intelligence requires valid account
                 .requestMatchers("/api/ai/document/**").authenticated() // Analysis requires authentication
                 .requestMatchers("/ws/**").permitAll()               // ALLOW WebSocket handshake
