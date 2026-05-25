@@ -80,3 +80,6 @@ yarn-error.log*
 **/db-data/
 **/mongo-data/
 **/dump.rdb
+
+# === 📝 Local Architecture Notes ===
+Architecture-Review.md
