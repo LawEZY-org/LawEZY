@@ -1410,3 +1410,375 @@
   font-weight: 700;
   letter-spacing: 0.5px;
 }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .expert-profile-page {
+    padding-top: 20px;
+  }
+
+  .profile-hero {
+    padding: 20px 16px;
+  }
+
+  .profile-header-main {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .profile-avatar-large {
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .avatar-wrapper-elite {
+    width: 90px;
+    height: 90px;
+  }
+
+  .avatar-wrapper-elite .letter-avatar {
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 2rem !important;
+  }
+
+  .expert-stats-row-header {
+    padding: 5px 12px;
+  }
+
+  .profile-info-primary {
+    align-items: center;
+    width: 100%;
+  }
+
+  .profile-info-primary h1 {
+    font-size: 1.6rem;
+  }
+
+  .expert-designation {
+    font-size: 0.8rem;
+  }
+
+  .expert-meta-markers {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.6rem;
+  }
+
+  .marker-divider {
+    display: none;
+  }
+
+  .expert-languages-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .institutional-action-grid {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .booking-fee-card {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .action-buttons-group {
+    width: 100%;
+  }
+
+  .secondary-actions-row {
+    flex-direction: column;
+  }
+
+  .btn-primary-consult {
+    height: 44px;
+    font-size: 0.75rem;
+    padding: 0 16px;
+  }
+
+  .self-view-actions-banner {
+    padding: 16px;
+    text-align: center;
+  }
+
+  .preview-indicator {
+    justify-content: center;
+    font-size: 0.6rem;
+  }
+
+  /* Body / Tabs */
+  .profile-body-container {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 100px;
+  }
+
+  .profile-tabs {
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+  }
+
+  .profile-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .profile-tabs button {
+    font-size: 0.55rem;
+    letter-spacing: 1px;
+    padding: 10px 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Bio / Content */
+  .bio-split-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .bio-text-main {
+    flex: none;
+  }
+
+  .bio-credentials-sidebar {
+    flex: none;
+  }
+
+  .credentials-list {
+    padding: 20px;
+  }
+
+  .tab-content {
+    font-size: 0.9rem;
+  }
+
+  .bio-section h3,
+  .portfolio-section h3,
+  .expertise-section h3,
+  .reviews-section h3,
+  .journey-section h3 {
+    font-size: 1.35rem;
+  }
+
+  /* Expertise */
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .expertise-item {
+    padding: 18px;
+  }
+
+  /* Snapshots */
+  .snapshots-display-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .snapshot-card-premium {
+    height: 200px;
+  }
+
+  /* Portfolio */
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reviews */
+  .review-card-premium {
+    padding: 16px;
+  }
+
+  .reviewer-name {
+    font-size: 1rem;
+  }
+
+  .review-text-elite {
+    font-size: 0.95rem;
+  }
+
+  /* Journey */
+  .career-roadmap {
+    margin-top: 30px;
+  }
+
+  .roadmap-timeline {
+    padding-left: 20px;
+  }
+
+  .roadmap-content strong {
+    font-size: 1rem;
+  }
+
+  /* Case Log */
+  .case-log-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Media Gallery */
+  .achievement-media-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+  }
+
+  /* Video */
+  .video-insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Affiliations */
+  .affiliations-grid {
+    flex-direction: column;
+  }
+
+  .affiliation-badge {
+    min-width: unset;
+    padding: 16px;
+  }
+
+  /* Sticky Bar */
+  .sticky-action-bar {
+    padding: 10px 16px;
+  }
+
+  .sticky-bar-content {
+    gap: 10px;
+  }
+
+  .sticky-text strong {
+    font-size: 0.9rem;
+  }
+
+  .sticky-text span {
+    font-size: 0.65rem;
+  }
+
+  .sticky-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .sticky-actions .btn-primary-consult {
+    font-size: 0.65rem;
+    padding: 0 12px;
+    height: 38px;
+    letter-spacing: 0.5px;
+  }
+
+  .sticky-actions .btn-secondary-msg {
+    font-size: 0.65rem;
+    padding: 0 10px;
+    height: 38px;
+  }
+
+  /* Back button */
+  .btn-back-circle {
+    top: 25px;
+    left: 12px;
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  /* Empty states */
+  .empty-state-container-premium {
+    padding: 40px 20px;
+  }
+
+  .empty-icon-box {
+    font-size: 2rem;
+  }
+
+  .empty-state-container-premium h4 {
+    font-size: 1.2rem;
+  }
+
+  .section-title-premium {
+    font-size: 1.4rem;
+  }
+
+  .section-subtitle-premium {
+    font-size: 0.85rem;
+  }
+
+  /* Booking Modal */
+  .booking-modal-card {
+    padding: 24px !important;
+    border-radius: 18px !important;
+    max-width: 100% !important;
+    margin: 10px;
+  }
+
+  .booking-modal-card h2 {
+    font-size: 1.3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-info-primary h1 {
+    font-size: 1.35rem;
+  }
+
+  .badge-expert-type {
+    font-size: 0.55rem;
+    padding: 4px 10px;
+  }
+
+  .expert-meta-markers {
+    font-size: 0.55rem;
+    gap: 6px;
+  }
+
+  .marker-item.verified-premium-stamp,
+  .marker-item.pending-verification {
+    padding: 3px 8px;
+    font-size: 0.5rem;
+  }
+
+  .fee-amount {
+    font-size: 1.2rem;
+  }
+
+  .booking-fee-card .fee-amount {
+    font-size: 1.1rem;
+  }
+
+  .profile-tabs button {
+    font-size: 0.5rem;
+    padding: 8px 10px;
+  }
+
+  .sticky-bar-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sticky-expert-info {
+    gap: 8px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .sticky-text strong {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+    display: block;
+  }
+}
